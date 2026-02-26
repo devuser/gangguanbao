@@ -2,7 +2,7 @@
   <aside class="sidebar" :class="{ collapsed }">
     <div class="logo">
       <span class="logo-icon">📋</span>
-      <span v-show="!collapsed" class="logo-text">规格查询系统</span>
+      <span v-show="!collapsed" class="logo-text">钢管宝查询系统</span>
     </div>
     <nav class="nav">
       <div v-for="group in menuGroups" :key="group.title" class="nav-group">
