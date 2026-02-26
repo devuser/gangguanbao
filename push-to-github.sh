@@ -22,7 +22,7 @@ git add .
 if git diff --cached --quiet 2>/dev/null; then
   echo "无文件变更"
 else
-  git commit -m "feat: 规格及厂家查询系统 - 订单/材质/规格/厂家管理、统计分析、Excel导出"
+  git commit -m "feat: 钢管宝查询系统 - 订单/材质/规格/厂家管理、统计分析、Excel导出"
 fi
 
 # 推送

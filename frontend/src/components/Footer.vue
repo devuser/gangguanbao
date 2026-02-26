@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-const copyright = '© 2025 规格及厂家查询系统 · 版权所有';
+const copyright = '© 2025 钢管宝查询系统 · 版权所有';
 </script>
 
 <style scoped>
