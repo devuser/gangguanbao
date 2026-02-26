@@ -458,6 +458,22 @@ function formatDate(d: string | undefined): string {
   }
 }
 
+/** 转为 input type="date" 所需的 YYYY-MM-DD 格式 */
+function toDateInputValue(d: string | undefined): string {
+  if (!d) return '';
+  const m = d.match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if (m) return m[0];
+  try {
+    const date = new Date(d);
+    if (!isNaN(date.getTime())) {
+      return date.toISOString().slice(0, 10);
+    }
+  } catch {
+    /* ignore */
+  }
+  return '';
+}
+
 function formatNum(val: number | undefined | null): string {
   if (val == null || (typeof val === 'number' && isNaN(val))) return '-';
   return String(val);
@@ -561,7 +577,7 @@ function openEdit(o: Order) {
   editForm.materialId = o.materialId;
   editForm.specId = o.specId;
   editForm.vendorId = o.vendorId;
-  editForm.orderDate = o.orderDate || '';
+  editForm.orderDate = toDateInputValue(o.orderDate);
   editForm.quantity = o.quantity ?? 0;
   editForm.unitPrice = o.unitPrice;
   editForm.amount = o.amount;

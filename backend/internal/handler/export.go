@@ -8,6 +8,7 @@ import (
 
 	"github.com/boyosoft/gangguanbao/backend/internal/repository"
 	"github.com/gin-gonic/gin"
+	"github.com/guregu/null"
 	"github.com/xuri/excelize/v2"
 )
 
@@ -152,9 +153,9 @@ func floatPtr(f *float64) float64 {
 	return *f
 }
 
-func timePtr(t *time.Time) interface{} {
-	if t == nil {
+func timePtr(t null.Time) interface{} {
+	if !t.Valid {
 		return ""
 	}
-	return t.Format("2006-01-02 15:04:05")
+	return t.Time.Format("2006-01-02 15:04:05")
 }
