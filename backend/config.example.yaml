@@ -1,0 +1,11 @@
+server:
+  port: 8080
+  mode: debug  # debug / release
+
+database:
+  host: 127.0.0.1
+  port: 13306
+  user: wa_pts_dbapp
+  password: your_password
+  dbname: gangguanbao_production
+  charset: utf8

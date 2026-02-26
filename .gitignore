@@ -1,0 +1,18 @@
+# Backend
+backend/bin/
+backend/config.yaml
+*.exe
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

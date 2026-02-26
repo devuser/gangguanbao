@@ -1,0 +1,144 @@
+/* 规格及厂家查询系统 - GitHub 风格 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* GitHub 配色 */
+  --color-bg: #f6f8fa;
+  --color-canvas: #ffffff;
+  --color-border: #d0d7de;
+  --color-border-muted: #d8dee4;
+  --color-text: #24292f;
+  --color-text-muted: #57606a;
+  --color-accent: #0969da;
+  --color-accent-hover: #0550ae;
+  --color-accent-subtle: #ddf4ff;
+  --color-success: #1a7f37;
+  --color-error: #cf222e;
+  --color-warning: #9a6700;
+  /* 侧边栏（GitHub 深色导航风格） */
+  --color-sidebar: #161b22;
+  --color-sidebar-hover: #21262d;
+  --color-sidebar-active: #0969da;
+  --color-sidebar-group: #8b949e;
+  --color-sidebar-text: #e6edf3;
+  --color-white: #ffffff;
+  /* 分页表格：每隔5行高亮 / 选中行 */
+  --color-table-stripe: #f0f6fc;
+  --color-table-selected: #ddf4ff;
+  --shadow-sm: 0 1px 2px rgba(31, 35, 40, 0.12);
+  --shadow-md: 0 3px 6px rgba(31, 35, 40, 0.12);
+  --radius: 6px;
+  --radius-sm: 6px;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', 'Helvetica Neue',
+    'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+html {
+  font-size: 14px;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: -1px;
+}
+
+/* 通用卡片 - GitHub 风格 */
+.card {
+  background: var(--color-canvas);
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+/* 分页表格：第5、10、15…行高亮，高亮色与选中色分离 */
+.data-table tbody tr:nth-child(5n) {
+  background: var(--color-table-stripe);
+}
+
+.data-table tbody tr.selected {
+  background: var(--color-table-selected) !important;
+}
+
+.data-table tbody tr:hover {
+  background: var(--color-table-selected);
+}
+
+/* 通用按钮 - GitHub 风格 */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-canvas);
+  color: var(--color-text);
+  transition: all 0.12s;
+}
+
+.btn:hover {
+  background: var(--color-bg);
+  border-color: var(--color-text-muted);
+}
+
+.btn-primary {
+  background: var(--color-accent);
+  color: var(--color-white);
+  border-color: var(--color-accent);
+}
+
+.btn-primary:hover {
+  background: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+}
+
+/* 危险操作按钮（如确定删除）- GitHub 红色 */
+.btn.btn-danger {
+  /* background: var(--color-error); */
+  /* color: var(--color-white); */
+  border-color: var(--color-error);
+}
+
+.btn.btn-danger:hover {
+  background: #a40e26;
+  border-color: #a40e26;
+}
