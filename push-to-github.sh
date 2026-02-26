@@ -1,5 +1,5 @@
 #!/bin/bash
-# 将 gangguanbao 提交到 GitHub: https://github.com/devuser/gangguanbao
+# 将 gangguanbao 提交到 GitHub: git@github.com:devuser/gangguanbao
 # 在项目根目录执行：bash push-to-github.sh
 
 set -e
@@ -15,7 +15,7 @@ fi
 
 # 设置远程
 git remote remove origin 2>/dev/null || true
-git remote add origin https://github.com/devuser/gangguanbao.git
+git remote add origin git@github.com:devuser/gangguanbao.git
 
 # 添加并提交
 git add .
@@ -29,4 +29,4 @@ fi
 git branch -M main
 git push -u origin main
 
-echo "完成！已推送到 https://github.com/devuser/gangguanbao"
+echo "完成！已推送到 git@github.com:devuser/gangguanbao"
