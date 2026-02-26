@@ -37,13 +37,13 @@ nvm install 18 && nvm use 18
 
 ### 2.3 MySQL
 
-**macOS：** `brew install mysql@5.7 && brew services start mysql@5.7`  
+**macOS：** `brew install mysql@5.5 && brew services start mysql@5.5`  
 **Docker（跨平台）：**
 ```bash
 docker run -d --name mysql-gangguanbao -p 13306:3306 \
   -e MYSQL_ROOT_PASSWORD=root123 \
   -e MYSQL_DATABASE=gangguanbao_production \
-  mysql:5.7
+  mysql:5.5
 ```
 
 ### 2.4 Make（可选）
