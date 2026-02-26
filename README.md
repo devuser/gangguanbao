@@ -43,8 +43,6 @@ nvm install 18 && nvm use 18
 docker run -d --name mysql-gangguanbao -p 13306:3306 \
   -e MYSQL_ROOT_PASSWORD=root123 \
   -e MYSQL_DATABASE=gangguanbao_production \
-  -e MYSQL_USER=wa_pts_dbapp \
-  -e MYSQL_PASSWORD=Bocs@2024 \
   mysql:5.7
 ```
 
