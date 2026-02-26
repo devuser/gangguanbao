@@ -11,7 +11,7 @@
 | 软件 | 最低版本 | 用途 |
 |------|----------|------|
 | **Go** | 1.21+ | 后端运行环境 |
-| **Node.js** | 18+ | 前端构建与运行 |
+| **Node.js** | 24.12.0 | 前端构建与运行 |
 | **MySQL** | 5.0+ | 数据库 |
 | **Make** | - | 可选，简化命令 |
 
@@ -27,15 +27,44 @@
 
 ### 2.2 Node.js
 
-**推荐 nvm：**
+**方式一：nvm（推荐，可多版本切换）**
 ```bash
+# 安装 nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-nvm install 18 && nvm use 18
+# 重启终端后执行
+nvm install 24 && nvm use 24
+node -v   # 应显示 v24.12.0
+npm -v    # 应显示 10.x 或更高
 ```
 
-或从 [nodejs.org](https://nodejs.org/) 下载 LTS 版本。
+**方式二：官方安装包**  
+从 [nodejs.org](https://nodejs.org/) 下载 LTS 版本（24+），按向导安装。
 
-### 2.3 MySQL
+**方式三：包管理器**
+- **macOS：** `brew install node@24`
+- **Windows：** `winget install OpenJS.NodeJS.LTS` 或 `choco install nodejs-lts`
+
+### 2.3 pnpm（可选，推荐）
+
+pnpm 比 npm 更快、更省磁盘，本项目支持 npm 与 pnpm。
+
+**安装 pnpm：**
+```bash
+# 方式一：npm 安装（需先安装 Node.js）
+npm install -g pnpm
+
+# 方式二：独立脚本（无需 Node.js 预装）
+curl -fsSL https://get.pnpm.io/install.sh | sh -
+```
+
+**验证：** `pnpm -v` 应显示版本号（如 8.x）。
+
+**使用 pnpm 安装前端依赖：**
+```bash
+cd frontend && pnpm install
+```
+
+### 2.4 MySQL
 
 **macOS：** `brew install mysql@5.5 && brew services start mysql@5.5`  
 **Docker（跨平台）：**
@@ -46,7 +75,7 @@ docker run -d --name mysql-gangguanbao -p 13306:3306 \
   mysql:5.5
 ```
 
-### 2.4 Make（可选）
+### 2.5 Make（可选）
 
 **macOS：** 已预装  
 **Windows：** `choco install make` 或使用 Git Bash
@@ -57,15 +86,9 @@ docker run -d --name mysql-gangguanbao -p 13306:3306 \
 
 ### 3.1 初始化数据库
 
-**全新安装：**
 ```bash
 mysql -h 127.0.0.1 -P 3306 -u root -p < sql/schema.sql
 # Docker 端口 13306：-P 13306
-```
-
-**已有旧表（materials/specs/vendors/orders）需迁移到 biz_ 前缀：**
-```bash
-mysql -h 127.0.0.1 -P 3306 -u root -p < sql/migrate_biz_prefix.sql
 ```
 
 ### 3.2 配置后端
@@ -83,8 +106,9 @@ cp config.example.yaml config.yaml
 cd backend && go mod tidy
 # 若慢：go env -w GOPROXY=https://goproxy.cn,direct
 
-# 前端（支持 npm / pnpm）
+# 前端（支持 npm 或 pnpm）
 cd frontend && npm install
+# 或：pnpm install
 # 若慢：npm config set registry https://registry.npmmirror.com
 ```
 
@@ -140,8 +164,7 @@ gangguanbao/
 ├── README.md              # 本文档（开发/部署）
 ├── README-SOP.md          # 用户操作手册
 ├── sql/
-│   ├── schema.sql         # 建表及示例数据（biz_ 前缀）
-│   └── migrate_biz_prefix.sql   # 旧表迁移脚本
+│   └── schema.sql         # 建表及示例数据（biz_ 前缀）
 ├── backend/               # Go + Gin + GORM
 │   ├── cmd/server/
 │   ├── internal/{config,handler,model,repository}
@@ -165,4 +188,4 @@ A：确认后端在 8080 端口，`vite.config.ts` 已配置 `/api` 代理。
 A：检查 `config.yaml` 中 host/port/user/password，确认 MySQL 已启动。
 
 **Q：表不存在或 Unknown table**  
-A：确认已执行 `sql/schema.sql`（新库）或 `sql/migrate_biz_prefix.sql`（旧库迁移）。
+A：确认已执行 `sql/schema.sql` 初始化数据库。

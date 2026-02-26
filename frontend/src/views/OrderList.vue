@@ -207,16 +207,38 @@
       title="订单详情"
     >
       <div v-if="detailTarget" class="detail-grid">
-        <div class="detail-item"><span class="detail-label">ID</span><span>{{ detailTarget.id ?? '-' }}</span></div>
-        <div class="detail-item"><span class="detail-label">订单号</span><span>{{ detailTarget.orderNo || '-' }}</span></div>
-        <div class="detail-item"><span class="detail-label">订单日期</span><span>{{ formatDate(detailTarget.orderDate) }}</span></div>
-        <div class="detail-item"><span class="detail-label">材质</span><span>{{ detailTarget.materialName || '-' }}</span></div>
-        <div class="detail-item"><span class="detail-label">规格</span><span>{{ detailTarget.specName || '-' }}</span></div>
-        <div class="detail-item"><span class="detail-label">厂家</span><span>{{ detailTarget.vendorName || '-' }}</span></div>
-        <div class="detail-item"><span class="detail-label">数量</span><span>{{ formatNum(detailTarget.quantity) }}</span></div>
-        <div class="detail-item"><span class="detail-label">单价</span><span>{{ formatMoney(detailTarget.unitPrice) }}</span></div>
-        <div class="detail-item"><span class="detail-label">金额</span><span>{{ formatMoney(detailTarget.amount) }}</span></div>
-        <div class="detail-item"><span class="detail-label">备注</span><span>{{ detailTarget.remark || '-' }}</span></div>
+        <div class="detail-item">
+          <span class="detail-label">ID</span><span>{{ detailTarget.id ?? '-' }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">订单号</span><span>{{ detailTarget.orderNo || '-' }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">订单日期</span
+          ><span>{{ formatDate(detailTarget.orderDate) }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">材质</span><span>{{ detailTarget.materialName || '-' }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">规格</span><span>{{ detailTarget.specName || '-' }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">厂家</span><span>{{ detailTarget.vendorName || '-' }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">数量</span><span>{{ formatNum(detailTarget.quantity) }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">单价</span
+          ><span>{{ formatMoney(detailTarget.unitPrice) }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">金额</span><span>{{ formatMoney(detailTarget.amount) }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">备注</span><span>{{ detailTarget.remark || '-' }}</span>
+        </div>
       </div>
       <template #footer>
         <button class="btn btn-primary" @click="showDetail = false">关闭</button>
